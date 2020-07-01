@@ -41,6 +41,7 @@ public class TodoAPIsSteps {
 
     }
 
+
     @Given("as a user I want to add a todo")
     public void as_a_user_I_want_add_a_todo() {
         LogHelper.info(log, "Step -as a user I want to add a todo");
@@ -54,6 +55,11 @@ public class TodoAPIsSteps {
     @Given("as a user I want to update a todo")
     public void as_a_user_I_want_to_update_todo_Apis() {
         LogHelper.info(log, "Step -as a user I want to update a todo");
+    }
+
+    @Given("as a user I want to delete todo Apis")
+    public void as_a_user_I_want_to_delete_todo_Apis() {
+        LogHelper.info(log, "Step -as a user I want to delete todo Apis");
     }
 
     @When("I should get the above todo created")
@@ -123,7 +129,8 @@ public class TodoAPIsSteps {
     public void I_should_get_the_response_code(String expectedResponseCode) {
         LogHelper.info(log, "Step -I should get the response code '"+expectedResponseCode+"'");
         String actualResponseCode=String.valueOf(context.getResponse().statusCode());
-        VerificationHelper.EqualsVerification("Response code must equal to '"+expectedResponseCode+"' and actual response Code is '"+actualResponseCode+"'", expectedResponseCode,actualResponseCode);
+        assertThat(expectedResponseCode.equals(actualResponseCode));
+      //  VerificationHelper.EqualsVerification("Response code must equal to '"+expectedResponseCode+"' and actual response Code is '"+actualResponseCode+"'", expectedResponseCode,actualResponseCode);
     }
 
 }

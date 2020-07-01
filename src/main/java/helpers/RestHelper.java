@@ -4,21 +4,13 @@ package helpers;
 import utils.LogHelper;
 import utils.VerificationHelper;
 import io.restassured.RestAssured;
-import io.restassured.config.HttpClientConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-/*import org.json.JSONObject;*/
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Map;
-import java.util.Properties;
 
 public class RestHelper extends BaseConfiguration {
     private static final Logger log = LogManager.getLogger(helpers.RestHelper.class.getName());
@@ -66,7 +58,7 @@ public class RestHelper extends BaseConfiguration {
 
         } catch (Throwable t) {
             String AssertMessage = "EXCEPTION Occurred in callRestApi method. " + t.getMessage();
-            VerificationHelper.FailVerification(AssertMessage);
+          //  VerificationHelper.FailVerification(AssertMessage);
             LogHelper.error(log, "STACKTRACE Exception occurred in callRestApi ---- " + Arrays.toString(t.getStackTrace()));
             return response;
         }

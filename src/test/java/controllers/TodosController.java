@@ -1,6 +1,5 @@
 package controllers;
 import helpers.BaseConfiguration;
-import helpers.CommonHelper;
 import helpers.RestHelper;
 import io.restassured.response.Response;
 import org.json.simple.JSONObject;
@@ -13,7 +12,6 @@ import java.io.FileReader;
 public class TodosController extends BaseConfiguration {
     private static final Logger log = LogManager.getLogger(TodosController.class.getName());
     RestHelper restHelper = new RestHelper();
-   // CommonHelper commonHelper = new CommonHelper();
     BaseConfiguration baseConfiguration = new BaseConfiguration();
 
     public Response getResponseOfRestAPI(String requestOpertation, String resource) {

@@ -5,8 +5,6 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
-//import static com.jayway.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 @SuppressWarnings("ALL")
 public class VerificationHelper {
@@ -42,26 +40,6 @@ public class VerificationHelper {
             PrintVerification(verificationName, "Equals", expectedValue, actualValue, verificationStatus);
             Assert.assertEquals(verificationName, expectedValue, actualValue);
         }
-
-
-        public static void NotEqualsVerification(String verificationName, String expectedValue, String actualValue) {
-            boolean verificationStatus = (!expectedValue.equals(actualValue));
-            PrintVerification(verificationName, "Not Equals", expectedValue, actualValue, verificationStatus);
-            Assert.assertNotSame(verificationName, expectedValue, actualValue);
-        }
-
-        public static void ContainsVerification(String verificationName, String expectedValue, String actualValue) {
-            boolean verificationStatus = (expectedValue.contains(actualValue) | actualValue.contains(expectedValue));
-            PrintVerification(verificationName, "Contains", expectedValue, actualValue, verificationStatus);
-            Assert.assertTrue(verificationName, (expectedValue.contains(actualValue) | actualValue.contains(expectedValue)));
-        }
-
-        public static void NotContainsVerification(String verificationName, String expectedValue, String actualValue) {
-            boolean verificationStatus = (!expectedValue.contains(actualValue));
-            PrintVerification(verificationName, "Not Contains", expectedValue, actualValue, verificationStatus);
-            Assert.assertTrue(verificationName, (!expectedValue.contains(actualValue)));
-        }
-
 
         public static void IsTrueVerification(String verificationName, boolean value) {
             PrintVerification(verificationName, "Is True", String.valueOf(true), String.valueOf(value), value);
