@@ -5,9 +5,6 @@ import utils.VerificationHelper;
 import gherkin.deps.com.google.gson.Gson;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-/*import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;*/
-
 import java.nio.file.FileSystems;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -21,7 +18,6 @@ public class CommonHelper {
     public String convertXeroReponseToString(List xeroResponse){
         LogHelper.info(log,"In convertXeroReponseToJson");
         try{
-            //String json = new Gson().toJson(xeroResponse.toArray());
             String json = new Gson().toJson(xeroResponse);
             LogHelper.info(log,json);
             LogHelper.info(log,"convertXeroReponseToJson - PASS");

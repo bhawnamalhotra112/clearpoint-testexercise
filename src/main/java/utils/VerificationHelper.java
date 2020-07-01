@@ -96,24 +96,10 @@ public class VerificationHelper {
 
         public static void compareJSONVerification(String verificationName, String expectedJson, String actualJson) throws IOException {
             ObjectMapper mapper = new ObjectMapper();
-           // boolean verificationStatus = (expectedJson.equals(actualJson));
             boolean verificationStatus = (expectedJson.equals(actualJson));
-            //LogHelper.info(log, "ACTUAL JSON is " + actualVJson);
             PrintJSONVerication(verificationName, "Equals", expectedJson, actualJson);
             utils.LogHelper.info(log,"Verifying the JSON");
-          //  Assert.assertEquals(verificationName, mapper.readTree(expectedJson),  mapper.readTree(actualJson));
         }
-
-    public static void compareJSONSchemaVerification(String verificationName, String expectedJsonSchemaFilePath, String actualJson) {
-       // ObjectMapper mapper = new ObjectMapper();
-        // boolean verificationStatus = (expectedJson.equals(actualJson));
-        //boolean verificationStatus = (expectedJson.equals(actualJson));
-        //LogHelper.info(log, "ACTUAL JSON is " + actualVJson);
-       // PrintJSONVerication(verificationName, "Equals", expectedJson, actualJson);
-        //utils.LogHelper.info(log,"Verifying the JSON");
-        //  Assert.assertEquals(verificationName, mapper.readTree(expectedJson),  mapper.readTree(actualJson));
-        //assertThat(actualJson, matchesJsonSchemaInClasspath(expectedJsonSchemaFilePath));
-    }
 
     }
 

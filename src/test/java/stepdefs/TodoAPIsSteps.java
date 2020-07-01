@@ -10,24 +10,16 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-
-import io.restassured.internal.path.json.JSONAssertion;
 import io.restassured.response.Response;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import utils.LogHelper;
 import utils.VerificationHelper;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
-
 import java.io.File;
-import java.io.FileReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import static io.restassured.path.json.JsonPath.from;
 
@@ -82,30 +74,16 @@ public class TodoAPIsSteps {
     public void I_should_get_the_todo_updated_above(String expectedBodyJSONFile) {
         LogHelper.info(log, "Step - I should get the todo updated json body");
         LogHelper.info(log, "JSON response is ---" + context.getResponse().getBody().asString());
-//        assertThat((context.getResponse().getBody().asString()).equals(expectedBodyJSONFile));
         JSONParser parser = new JSONParser();
         try {
-            //Object obj = parser.parse(new FileReader("C:\\demos\\clearpoint\\src\\test\\java\\testdata\\input\\"+expectedBodyJSONFile));
             ObjectMapper mapper = new ObjectMapper();
-            // A JSON object. Key value pairs are unordered. JSONObject supports java.util.Map interface.
-
             String expectedJsonSchemaFilePath=baseConfiguration.getJsonInputFilesPath(expectedBodyJSONFile);
             String expectedJsonString=FileUtils.readFileToString(new File(expectedJsonSchemaFilePath), StandardCharsets.UTF_8);
             String actualJsonString=context.getResponse().getBody().asString();
             assertEquals(mapper.readTree(expectedJsonString),mapper.readTree(actualJsonString));
-
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
-
-        /*for (Integer temp : list) {
-            System.out.println(temp);
-            assertThat(list).contains(25);
-        }*/
     }
     @When("I make (.+) request to the (.+)")
     public void I_make_request_to_the_EndPoint(String apiOperation, String resource) {
@@ -128,8 +106,6 @@ public class TodoAPIsSteps {
 
     @When("I make PUT request to resource (.+) with Body (.+)")
     public void I_make_a_PUT_request_to_the_Resource_with_Body(String resource, String jsonFileName) {
-        //int randomTodoId = commonHelper.generateRandomNumber(210, 300);
-        //context.addSharedData("randomTodoId", String.valueOf(randomTodoId));
         LogHelper.info(log, "Step -I make PUT request to the '" + resource + "' with Body '" + jsonFileName + "'");
         Response response = todosController.puttoDo(resource, jsonFileName);
         context.setResponse(response);
@@ -148,9 +124,6 @@ public class TodoAPIsSteps {
         LogHelper.info(log, "Step -I should get the response code '"+expectedResponseCode+"'");
         String actualResponseCode=String.valueOf(context.getResponse().statusCode());
         VerificationHelper.EqualsVerification("Response code must equal to '"+expectedResponseCode+"' and actual response Code is '"+actualResponseCode+"'", expectedResponseCode,actualResponseCode);
-      //  assertThat(actualResponseCode.equals(expectedResponseCode));
     }
-
-
 
 }

@@ -28,25 +28,6 @@ public class RestHelper extends BaseConfiguration {
         Response response = null;
         RequestSpecification request;
         try {
-
-            /*RestAssured.baseURI = URI;
-            if(MapUtils.isNotEmpty(requestHeaders)){
-                request = RestAssured.given()
-                        .headers(requestHeaders).contentType(contentType)
-                        .log().all();
-            } else{
-                //noinspection UnusedAssignment
-                request = RestAssured.given()
-                        .headers(
-                                "Authorization","Bearer " + equiFaxOAuth2token
-                                //        ,"Accept",ContentType.JSON
-                        )
-                        .log().all();
-                request = RestAssured.given()
-                        .contentType(ContentType.JSON)
-                        .log().all();
-
-            }*/
             request = RestAssured.given()
                     .contentType(ContentType.JSON)
                     .log().all();
@@ -80,15 +61,12 @@ public class RestHelper extends BaseConfiguration {
             LogHelper.info(log, "Response Body - " + response.asString());
             LogHelper.info(log,"Response Body - " + response.prettyPrint());
             LogHelper.info(log,"Response Body - " + response.getBody().toString());
-            // LogHelper.info(log,"Response Header msgid - " + response.header("msgid"));
             LogHelper.info(log, "============================= RESPONSE END ===============================================");
             return response;
 
         } catch (Throwable t) {
-            //    thrown = true;
             String AssertMessage = "EXCEPTION Occurred in callRestApi method. " + t.getMessage();
             VerificationHelper.FailVerification(AssertMessage);
-            //assertFalse(AssertMessage,thrown);
             LogHelper.error(log, "STACKTRACE Exception occurred in callRestApi ---- " + Arrays.toString(t.getStackTrace()));
             return response;
         }

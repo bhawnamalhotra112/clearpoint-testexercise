@@ -8,7 +8,6 @@ public class TestContext {
 
     private HashMap<Object, Object> sharedData;
     Response contextResponse;
-    int ramdomtoDOID;
     public TestContext(){sharedData = new HashMap<>();}
     public Response getResponse() {
         return contextResponse;
