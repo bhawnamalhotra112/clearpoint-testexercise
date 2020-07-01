@@ -1,4 +1,4 @@
-@apis
+@apis @regression
 Feature: Get todo apis
 
   As a consumer I want to Access the todo APIs

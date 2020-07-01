@@ -1,0 +1,16 @@
+#image: maven:3.6.3-jdk-14
+pipelines:
+  pull-requests:
+    RegressionTest-QA:
+    - step:
+        name: RegressionTest-QA
+        image: maven:3.6.3-jdk-14
+        version: '3'
+        script:
+          - mvn clean test -Dapp.env=qa -Dcucumber.options=" --tags '@regression'"
+        artifacts:
+          #- test-output/**
+          - test-output/HtmlReport/ExtentHtml.html
+          - target/cucumber-results.xml
+          - target/cucumber-html-report/**
+
