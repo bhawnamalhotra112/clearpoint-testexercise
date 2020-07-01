@@ -49,11 +49,11 @@ public class TodoAPIsSteps {
 
     }
 
-
     @Given("as a user I want to add a todo")
     public void as_a_user_I_want_add_a_todo() {
         LogHelper.info(log, "Step -as a user I want to add a todo");
     }
+
     @Given("as a user I want to access todo Apis")
     public void as_a_user_I_want_to_access_todo_Apis() {
         LogHelper.info(log, "Step -as a user I want to access todo Apis");

@@ -24,13 +24,9 @@ public class RestHelper extends BaseConfiguration {
     private static final Logger log = LogManager.getLogger(helpers.RestHelper.class.getName());
     Response response;
     public Response callRestApi(String apiURI, Map<String, String> requestHeaders, String requestBody, String contentType, String apiAction, Map<String, String> parameters) {
-        //oAuth2token=getTokenOAuthTwoForEquiFax(null,null,null,null,null);
-        // Map<String, Object> responseMap = new HashMap<>();
-        //String endpoint = setEndpoint(resource);
         String URI = apiURI;
         Response response = null;
         RequestSpecification request;
-        //    boolean thrown = false;
         try {
 
             /*RestAssured.baseURI = URI;
@@ -53,7 +49,6 @@ public class RestHelper extends BaseConfiguration {
             }*/
             request = RestAssured.given()
                     .contentType(ContentType.JSON)
-                 //   .headers("Authorization", "Bearer " + equiFaxOAuth2token, "Accept", ContentType.JSON)
                     .log().all();
 
             switch (apiAction.trim().toLowerCase()) {
@@ -83,8 +78,6 @@ public class RestHelper extends BaseConfiguration {
             LogHelper.info(log, "============================= RESPONSE START ===============================================");
             LogHelper.info(log, "Response Status Code is - " + response.getStatusCode());
             LogHelper.info(log, "Response Body - " + response.asString());
-            // JsonPath jsonPathValidator = response.jsonPath();
-            //LogHelper.info(log, jsonPathValidator.get("organisationNumber"));
             LogHelper.info(log,"Response Body - " + response.prettyPrint());
             LogHelper.info(log,"Response Body - " + response.getBody().toString());
             // LogHelper.info(log,"Response Header msgid - " + response.header("msgid"));
@@ -93,10 +86,10 @@ public class RestHelper extends BaseConfiguration {
 
         } catch (Throwable t) {
             //    thrown = true;
-            String AssertMessage = "EXCEPTION Occurred in callEquiFaxAPIwithOauth2Token method. " + t.getMessage();
+            String AssertMessage = "EXCEPTION Occurred in callRestApi method. " + t.getMessage();
             VerificationHelper.FailVerification(AssertMessage);
             //assertFalse(AssertMessage,thrown);
-            LogHelper.error(log, "STACKTRACE Exception occurred in callEquiFaxAPIwithOauth2Token ---- " + Arrays.toString(t.getStackTrace()));
+            LogHelper.error(log, "STACKTRACE Exception occurred in callRestApi ---- " + Arrays.toString(t.getStackTrace()));
             return response;
         }
     }
