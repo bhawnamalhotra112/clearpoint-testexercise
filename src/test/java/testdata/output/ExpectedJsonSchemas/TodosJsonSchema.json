@@ -1,0 +1,94 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "array",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": [],
+  "examples": [
+    [
+      {
+        "userId": 1,
+        "id": 1,
+        "title": "delectus aut autem",
+        "completed": false
+      },
+      {
+        "userId": 1,
+        "id": 2,
+        "title": "quis ut nam facilis et officia qui",
+        "completed": false
+      }
+    ]
+  ],
+  "additionalItems": true,
+  "items": {
+    "anyOf": [
+      {
+        "$id": "#/items/anyOf/0",
+        "type": "object",
+        "title": "The first anyOf schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "userId": 1,
+            "id": 1,
+            "title": "delectus aut autem",
+            "completed": false
+          }
+        ],
+        "required": [
+          "userId",
+          "id",
+          "title",
+          "completed"
+        ],
+        "additionalProperties": true,
+        "properties": {
+          "userId": {
+            "$id": "#/items/anyOf/0/properties/userId",
+            "type": "integer",
+            "title": "The userId schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+              1
+            ]
+          },
+          "id": {
+            "$id": "#/items/anyOf/0/properties/id",
+            "type": "integer",
+            "title": "The id schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": 0,
+            "examples": [
+              1
+            ]
+          },
+          "title": {
+            "$id": "#/items/anyOf/0/properties/title",
+            "type": "string",
+            "title": "The title schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "delectus aut autem"
+            ]
+          },
+          "completed": {
+            "$id": "#/items/anyOf/0/properties/completed",
+            "type": "boolean",
+            "title": "The completed schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": false,
+            "examples": [
+              false
+            ]
+          }
+        }
+      }
+    ],
+    "$id": "#/items"
+  }
+}
