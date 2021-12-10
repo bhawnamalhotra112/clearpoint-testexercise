@@ -10,7 +10,7 @@
     <properties>
         <cucumber.version>4.7.1</cucumber.version>
         <restassured.version>4.1.2</restassured.version>
-        <apachelog4j.version>2.13.1</apachelog4j.version>
+        <apachelog4j.version>2.15.0</apachelog4j.version>
     </properties>
     <dependencies>
         <dependency>
